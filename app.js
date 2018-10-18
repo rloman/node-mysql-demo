@@ -37,7 +37,7 @@ function list() {
 }
 
 function findById(id) {
-  connection.query('SELECT * FROM users where id=?',[id], (err, row) => {
+  connection.query('SELECT * FROM users where id=?', [id], (err, row) => {
     if (err) throw err;
 
     console.log('Data received from Db:\n');
@@ -60,7 +60,7 @@ function update(id, email) {
   );
 }
 
-function delete(id) {
+function remove(id) {
   connection.query(
     'DELETE FROM users WHERE id = ?', [id], (err, result) => {
       if (err) throw err;
@@ -77,4 +77,10 @@ list();
 update(5, 'poedel@example.com');
 list();
 
-findById(id);
+remove(2);
+
+list();
+
+findById(3);
+
+findById(2);
